@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Movie Details</title>
+</head>
+<body>
+<h1>Movie Details</h1>
+<div th:if="${movie}">
+    <div>
+        <strong>Title:</strong> <span th:text="${movie.title}"></span>
+    </div>
+    <div>
+        <strong>Description:</strong> <span th:text="${movie.description}"></span>
+    </div>
+    <div>
+        <strong>Genres:</strong> <span th:text="${movie.genres}"></span>
+    </div>
+    <div>
+        <strong>Category:</strong> <span th:text="${movie.category}"></span>
+    </div>
+    <div>
+        <strong>Release Date:</strong> <span th:text="${movie.releaseDate}"></span>
+    </div>
+    <div>
+        <strong>Director:</strong> <span th:text="${movie.director}"></span>
+    </div>
+    <div>
+        <strong>Actors:</strong> <span th:text="${movie.actors}"></span>
+    </div>
+    <div>
+        <strong>Rating:</strong> <span th:text="${movie.rating}"></span>
+    </div>
+    <div>
+        <strong>Poster URL:</strong> <span th:text="${movie.posterUrl}"></span>
+    </div>
+</div>
+<div th:unless="${movie}">
+    <p>Movie not found.</p>
+</div>
+<br/>
+<a th:href="@{/movies}">Back to Movies List</a>
+</body>
+</html>
