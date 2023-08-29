@@ -111,7 +111,7 @@ public class Movie {
         this.posterUrl = posterUrl;
     }
 
-    public double match(String keyword) {
+    public int match(String keyword) {
         int matches[] = {lcs(keyword, title), lcs(keyword, category), lcs(keyword, director),
                 lcs(keyword, String.join(" ", genres)),
                 lcs(keyword, String.join(" ", actors))};

@@ -87,13 +87,23 @@ public class MovieService implements IMoviesService{
     }
 
     @Override
-    public List<Movie> sort(boolean dateOfRelease, boolean alphabetic) {
+    public List<Movie> sort(boolean dateOfRelease, boolean alphabetic, boolean asc) {
         List<Movie> movies = movieBase.getMovies();
         if(dateOfRelease){
-            movies.sort(Comparator.comparing(Movie::getReleaseDate).reversed());
+            if(asc){
+                movies.sort(Comparator.comparing(Movie::getReleaseDate));
+            }
+            else{
+                movies.sort(Comparator.comparing(Movie::getReleaseDate).reversed());
+            }
         }
         if(alphabetic){
-            Collections.sort(movies, Comparator.comparing(Movie::getTitle, String.CASE_INSENSITIVE_ORDER));
+            if(asc){
+                Collections.sort(movies, Comparator.comparing(Movie::getTitle, String.CASE_INSENSITIVE_ORDER));
+            }
+            else{
+                Collections.sort(movies, Comparator.comparing(Movie::getTitle, String.CASE_INSENSITIVE_ORDER).reversed());
+            }
         }
         return movies;
     }
@@ -101,17 +111,20 @@ public class MovieService implements IMoviesService{
     @Override
     public List<Movie> search(String text) {
         List<Movie> searchResults = new ArrayList<>();
+        int maxMatch = 0;
         for (Movie movie : movieBase.getMovies()) {
-            double matchValue = movie.match(text);
+            int matchValue = movie.match(text);
             if (matchValue > 0) {
                 searchResults.add(movie);
             }
+            maxMatch = Math.max(maxMatch, matchValue);
         }
         searchResults.sort((movie1, movie2) -> {
             double match1 = movie1.match(text);
             double match2 = movie2.match(text);
             return Double.compare(match2, match1);
         });
-        return searchResults;
+        int finalMaxMatch = maxMatch;
+        return searchResults.stream().filter(movie -> movie.match(text) == finalMaxMatch).collect(Collectors.toList());
     }
 }

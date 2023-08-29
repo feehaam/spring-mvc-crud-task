@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Delete a Movie</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css">
+</head>
+<body class="bg-gray-100">
+<div class="container mx-auto p-4">
+    <h1 class="text-2xl font-bold mb-4">Delete movie</h1>
+    <form th:action="@{/delete}" method="post">
+        <div class="mb-4">
+            <label class="block text-gray-700 font-bold mb-2">Enter movie id</label>
+            <input type="number" name="id" class="px-4 py-2 w-full border rounded">
+        </div>
+        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Load</button>
+        <br>
+    </form>
+    <div th:if="${alert}" class="alert alert-danger">
+        <p th:text="${alert}"></p>
+    </div>
+    <br/>
+    <a th:href="@{/}">Back to Movies List</a>
+</div>
+</body>
+</html>

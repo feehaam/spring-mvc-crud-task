@@ -2,42 +2,47 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Movie Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-<h1>Movie Details</h1>
-<div th:if="${movie}">
-    <div>
-        <strong>Title:</strong> <span th:text="${movie.title}"></span>
+<body class="bg-gray-100">
+<div class="container mx-auto p-6">
+    <h1 class="text-3xl font-semibold mb-4">Movie Details</h1>
+    <div th:if="${movie}" class="bg-white rounded-lg shadow-md p-4">
+        <div class="mb-2">
+            <strong class="font-semibold">Title:</strong> <span th:text="${movie.title}" class="ml-2"></span>
+        </div>
+        <div class="mb-2">
+            <strong class="font-semibold">Description:</strong> <span th:text="${movie.description}" class="ml-2"></span>
+        </div>
+        <div class="mb-2">
+            <strong class="font-semibold">Genres:</strong> <span th:text="${movie.genres}" class="ml-2"></span>
+        </div>
+        <div class="mb-2">
+            <strong class="font-semibold">Category:</strong> <span th:text="${movie.category}" class="ml-2"></span>
+        </div>
+        <div class="mb-2">
+            <strong class="font-semibold">Release Date:</strong> <span th:text="${movie.releaseDate}" class="ml-2"></span>
+        </div>
+        <div class="mb-2">
+            <strong class="font-semibold">Director:</strong> <span th:text="${movie.director}" class="ml-2"></span>
+        </div>
+        <div class="mb-2">
+            <strong class="font-semibold">Actors:</strong> <span th:text="${movie.actors}" class="ml-2"></span>
+        </div>
+        <div class="mb-2">
+            <strong class="font-semibold">Rating:</strong> <span th:text="${movie.rating}" class="ml-2"></span>
+        </div>
+        <div class="mb-2">
+            <strong class="font-semibold">Poster URL:</strong>
+            <img th:src="${movie.posterUrl}" alt="Movie Poster" class="max-w-full h-auto mt-2">
+        </div>
     </div>
-    <div>
-        <strong>Description:</strong> <span th:text="${movie.description}"></span>
+    <div th:unless="${movie}" class="mt-4">
+        <p>Movie not found.</p>
     </div>
-    <div>
-        <strong>Genres:</strong> <span th:text="${movie.genres}"></span>
-    </div>
-    <div>
-        <strong>Category:</strong> <span th:text="${movie.category}"></span>
-    </div>
-    <div>
-        <strong>Release Date:</strong> <span th:text="${movie.releaseDate}"></span>
-    </div>
-    <div>
-        <strong>Director:</strong> <span th:text="${movie.director}"></span>
-    </div>
-    <div>
-        <strong>Actors:</strong> <span th:text="${movie.actors}"></span>
-    </div>
-    <div>
-        <strong>Rating:</strong> <span th:text="${movie.rating}"></span>
-    </div>
-    <div>
-        <strong>Poster URL:</strong> <span th:text="${movie.posterUrl}"></span>
+    <div class="mt-4">
+        <a th:href="@{/}" class="text-blue-500 hover:underline">Back to Movies List</a>
     </div>
 </div>
-<div th:unless="${movie}">
-    <p>Movie not found.</p>
-</div>
-<br/>
-<a th:href="@{/movies}">Back to Movies List</a>
 </body>
 </html>

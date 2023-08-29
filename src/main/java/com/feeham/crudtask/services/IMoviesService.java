@@ -10,6 +10,6 @@ public interface IMoviesService {
     void updateMovie(int id, Movie movie);
     void deleteMovie(int id);
     List<Movie> filter(String category, String genre, int releaseYear);
-    List<Movie> sort(boolean dateOfRelease, boolean alphabetic);
+    List<Movie> sort(boolean dateOfRelease, boolean alphabetic, boolean asc);
     List<Movie> search(String text);
 }

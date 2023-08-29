@@ -5,127 +5,119 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css">
 </head>
 <body class="bg-gray-100">
-<div class="container mx-auto p-4">
-    <h1 class="text-2xl font-bold mb-4">Movies List</h1>
-
-    <div class="mb-4">
-        <a href="/movies/add" class="text-blue-500 hover:underline">Add Movie</a>
-        <span class="mx-2">|</span>
-        <a href="/movies/update" class="text-blue-500 hover:underline">Update Movie</a>
-        <span class="mx-2">|</span>
-        <a href="/movies/delete" class="text-blue-500 hover:underline">Delete Movie</a>
+    <div class="container p-2">
+        <h1 class="text-2xl font-bold mb-4">Movies List</h1>
+        <br>
+        <div class="mb-4">
+            <a href="/add" class="text-blue-500 hover:underline">Add Movie</a>
+            <span class="mx-2">|</span>
+            <a href="/update" class="text-blue-500 hover:underline">Update Movie</a>
+            <span class="mx-2">|</span>
+            <a href="/delete" class="text-blue-500 hover:underline">Delete Movie</a>
+        </div>
     </div>
 
-    <form class="mb-4" th:action="@{/movies}" method="get">
-        <input type="text" name="searchText" class="px-2 py-1 border rounded" placeholder="Search...">
-        <button type="submit" class="bg-blue-500 text-white px-4 py-1 rounded ml-2">Search</button>
-    </form>
+    <div class="container mx-auto p-4">
+        <form class="mb-4" th:action="@{/search}" method="get">
+            <input type="text" name="searchText" class="px-2 py-1 border rounded" placeholder="Search...">
+            <button type="submit" class="bg-blue-500 text-white px-4 py-1 rounded ml-2">Search</button>
+        </form>
+        <form class="mb-4" th:action="@{/filter}" method="get">
+            <label class="mr-2">Filter by:</label>
+            <select name="category" class="border rounded px-2 py-1">
+                <option value="">All Categories</option>
+                <option value="Action">Action</option>
+                <option value="Drama">Drama</option>
+                <option value="Comedy">Comedy</option>
+                <option value="Adventure">Adventure</option>
+                <option value="Sci-Fi">Sci-Fi</option>
+                <option value="Fantasy">Fantasy</option>
+                <option value="Horror">Horror</option>
+                <option value="Romance">Romance</option>
+                <option value="Thriller">Thriller</option>
+                <option value="Animation">Animation</option>
+            </select>
+            <select name="genre" class="border rounded px-2 py-1 ml-2">
+                <option value="">All Genres</option>
+                <option value="Action">Action</option>
+                <option value="Adventure">Adventure</option>
+                <option value="Comedy">Comedy</option>
+                <option value="Drama">Drama</option>
+                <option value="Fantasy">Fantasy</option>
+                <option value="Horror">Horror</option>
+                <option value="Mystery">Mystery</option>
+                <option value="Romance">Romance</option>
+                <option value="Sci-Fi">Sci-Fi</option>
+                <option value="Thriller">Thriller</option>
+                <option value="Animation">Animation</option>
+                <option value="Family">Family</option>
+                <option value="History">History</option>
+                <option value="Musical">Musical</option>
+                <option value="War">War</option>
+                <option value="Crime">Crime</option>
+                <option value="Western">Western</option>
+                <option value="Biography">Biography</option>
+            </select>
 
-
-    <form class="flex mb-4" th:action="@{/filter}" method="get">
-        <label class="mr-2">Filter by:</label>
-        <select name="category" class="border rounded px-2 py-1">
-            <option value="">All Categories</option>
-            <option value="Action">Action</option>
-            <option value="Drama">Drama</option>
-            <option value="Comedy">Comedy</option>
-            <option value="Adventure">Adventure</option>
-            <option value="Sci-Fi">Sci-Fi</option>
-            <option value="Fantasy">Fantasy</option>
-            <option value="Horror">Horror</option>
-            <option value="Romance">Romance</option>
-            <option value="Thriller">Thriller</option>
-            <option value="Animation">Animation</option>
-        </select>
-        <select name="genre" class="border rounded px-2 py-1 ml-2">
-            <option value="">All Genres</option>
-            <option value="Action">Action</option>
-            <option value="Adventure">Adventure</option>
-            <option value="Comedy">Comedy</option>
-            <option value="Drama">Drama</option>
-            <option value="Fantasy">Fantasy</option>
-            <option value="Horror">Horror</option>
-            <option value="Mystery">Mystery</option>
-            <option value="Romance">Romance</option>
-            <option value="Sci-Fi">Sci-Fi</option>
-            <option value="Thriller">Thriller</option>
-            <option value="Animation">Animation</option>
-            <option value="Family">Family</option>
-            <option value="History">History</option>
-            <option value="Musical">Musical</option>
-            <option value="War">War</option>
-            <option value="Crime">Crime</option>
-            <option value="Western">Western</option>
-            <option value="Biography">Biography</option>
-        </select>
-
-        <select name="releaseYear" class="border rounded px-2 py-1 ml-2">
-            <option value="">All Years</option>
-            <option value="2023">2023</option>
-            <option value="2022">2022</option>
-            <option value="2021">2021</option>
-            <option value="2020">2020</option>
-            <option value="2019">2019</option>
-            <option value="2018">2018</option>
-            <option value="2017">2017</option>
-            <option value="2016">2017</option>
-            <option value="2015">2017</option>
-            <option value="2014">2017</option>
-            <option value="2013">2017</option>
-            <option value="2012">2017</option>
-            <option value="2011">2017</option>
-            <option value="2010">1971</option>
-            <option value="2009">1970</option>
-        </select>
-
-        <button type="submit" class="bg-blue-500 text-white px-4 py-1 rounded ml-2">Filter</button>
-    </form>
-
-    <div class="flex mb-4">
-        <label class="mr-2">Sort by:</label>
-        <select name="sort" class="border rounded px-2 py-1">
-            <option value="releaseDate_desc">Release Date (Newest First)</option>
-            <option value="releaseDate_asc">Release Date (Oldest First)</option>
-            <option value="title_asc">Title (A-Z)</option>
-            <option value="title_desc">Title (Z-A)</option>
-        </select>
-        <button type="submit" class="bg-blue-500 text-white px-4 py-1 rounded ml-2">Sort</button>
+            <select name="releaseYear" class="border rounded px-2 py-1 ml-2">
+                <option value="0">All Years</option>
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+                <option value="2021">2021</option>
+                <option value="2020">2020</option>
+                <option value="2019">2019</option>
+                <option value="2018">2018</option>
+                <option value="2017">2017</option>
+                <option value="2016">2016</option>
+                <option value="2015">2015</option>
+                <option value="2014">2014</option>
+                <option value="2013">2013</option>
+                <option value="2012">2012</option>
+                <option value="2011">2011</option>
+                <option value="2010">2010</option>
+                <option value="1970">1970</option>
+            </select>
+            <button type="submit" class="bg-blue-500 text-white px-4 py-1 rounded ml-2">Filter</button>
+        </form>
+        <div>
+        <form class="flex mb-4" th:action="@{/sort}" method="get">
+            <label class="mr-2">Sort by:</label>
+            <select name="sortType" class="border rounded px-2 py-1">
+                <option value="releaseDate_desc">Release Date (Newest First)</option>
+                <option value="releaseDate_asc">Release Date (Oldest First)</option>
+                <option value="title_asc">Title (A-Z)</option>
+                <option value="title_desc">Title (Z-A)</option>
+            </select>
+            <button type="submit" class="bg-blue-500 text-white px-4 py-1 rounded ml-2">Sort</button>
+        </form>
+            <br>
+            <form action="/">
+                <button type="submit" class="bg-blue-500 text-white px-4 py-1 rounded ml-2">Reset to original</button>
+            </form>
     </div>
 
     <div class="container mx-auto p-4">
         <h1 class="text-2xl font-bold mb-4">Movies List</h1>
 
-        <!-- ... Add links, search bar, and filter options ... -->
-
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <!-- Loop through movies and display details -->
             <div th:each="movie : ${movies}" class="bg-white shadow p-4 hover:shadow-lg">
-                <h3 class="text-lg font-bold mb-2" th:text="${movie.title}"></h3>
-                <p class="mb-2" th:text="${movie.description}"></p>
-                <div class="mb-2">
-                    <strong>Genres:</strong> <span th:text="${movie.genres}"></span>
-                </div>
-                <div class="mb-2">
-                    <strong>Category:</strong> <span th:text="${movie.category}"></span>
-                </div>
-                <div class="mb-2">
-                    <strong>Release Date:</strong> <span th:text="${movie.releaseDate}"></span>
-                </div>
-                <div class="mb-2">
-                    <strong>Director:</strong> <span th:text="${movie.director}"></span>
-                </div>
-                <div class="mb-2">
-                    <strong>Actors:</strong> <span th:text="${movie.actors}"></span>
-                </div>
-                <div class="mb-2">
-                    <strong>Rating:</strong> <span th:text="${movie.rating}"></span>
-                </div>
-                <div class="mb-2">
-                    <strong>Poster URL:</strong> <span th:text="${movie.posterUrl}"></span>
-                </div>
-                <!-- Add more movie details as needed -->
+                <a th:href="@{|/${movie.id}|}" class="block">
+                    <h3 class="text-lg font-bold mb-2" th:text="${movie.title}"></h3>
+                    <p class="mb-2" th:text="${movie.description}"></p>
+                    <img th:src="${movie.posterUrl}" alt="Movie Poster" class="max-w-full h-auto mt-2">
+                    <div class="mb-2">
+                        <strong>Category:</strong> <span th:text="${movie.category}"></span>
+                    </div>
+                    <div class="mb-2">
+                        <strong>Release Date:</strong> <span th:text="${movie.releaseDate}"></span>
+                    </div>
+                    <div class="mb-2">
+                        <strong>Rating:</strong> <span th:text="${movie.rating}"></span>
+                    </div>
+                </a>
             </div>
         </div>
+
     </div>
 </div>
 </body>

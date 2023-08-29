@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Movie</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css">
+</head>
+<body class="bg-gray-100">
+<div class="container mx-auto p-4">
+    <h1 class="text-2xl font-bold mb-4">Add Movie</h1>
+    <form th:action="@{/add}" method="post">
+        <div class="mb-4">
+            <label class="block text-gray-700 font-bold mb-2">Title</label>
+            <input type="text" name="title" class="px-4 py-2 w-full border rounded">
+        </div>
+
+        <div class="mb-4">
+            <label class="block text-gray-700 font-bold mb-2">Description</label>
+            <textarea name="description" class="px-4 py-2 w-full border rounded"></textarea>
+        </div>
+
+        <div class="mb-4">
+            <label class="block text-gray-700 font-bold mb-2">Genres</label>
+            <select name="genre" class="border rounded px-2 py-1 ml-2">
+                <option value="">All Genres</option>
+                <option value="Action">Action</option>
+                <option value="Adventure">Adventure</option>
+                <option value="Comedy">Comedy</option>
+                <option value="Drama">Drama</option>
+                <option value="Fantasy">Fantasy</option>
+                <option value="Horror">Horror</option>
+                <option value="Mystery">Mystery</option>
+                <option value="Romance">Romance</option>
+                <option value="Sci-Fi">Sci-Fi</option>
+                <option value="Thriller">Thriller</option>
+                <option value="Animation">Animation</option>
+                <option value="Family">Family</option>
+                <option value="History">History</option>
+                <option value="Musical">Musical</option>
+                <option value="War">War</option>
+                <option value="Crime">Crime</option>
+                <option value="Western">Western</option>
+                <option value="Biography">Biography</option>
+            </select>
+            <select name="genre2" class="border rounded px-2 py-1 ml-2">
+                <option value="">All Genres</option>
+                <option value="Action">Action</option>
+                <option value="Adventure">Adventure</option>
+                <option value="Comedy">Comedy</option>
+                <option value="Drama">Drama</option>
+                <option value="Fantasy">Fantasy</option>
+                <option value="Horror">Horror</option>
+                <option value="Mystery">Mystery</option>
+                <option value="Romance">Romance</option>
+                <option value="Sci-Fi">Sci-Fi</option>
+                <option value="Thriller">Thriller</option>
+                <option value="Animation">Animation</option>
+                <option value="Family">Family</option>
+                <option value="History">History</option>
+                <option value="Musical">Musical</option>
+                <option value="War">War</option>
+                <option value="Crime">Crime</option>
+                <option value="Western">Western</option>
+                <option value="Biography">Biography</option>
+            </select>
+            <select name="genre3" class="border rounded px-2 py-1 ml-2">
+                <option value="">All Genres</option>
+                <option value="Action">Action</option>
+                <option value="Adventure">Adventure</option>
+                <option value="Comedy">Comedy</option>
+                <option value="Drama">Drama</option>
+                <option value="Fantasy">Fantasy</option>
+                <option value="Horror">Horror</option>
+                <option value="Mystery">Mystery</option>
+                <option value="Romance">Romance</option>
+                <option value="Sci-Fi">Sci-Fi</option>
+                <option value="Thriller">Thriller</option>
+                <option value="Animation">Animation</option>
+                <option value="Family">Family</option>
+                <option value="History">History</option>
+                <option value="Musical">Musical</option>
+                <option value="War">War</option>
+                <option value="Crime">Crime</option>
+                <option value="Western">Western</option>
+                <option value="Biography">Biography</option>
+            </select>
+
+        </div>
+
+        <div class="mb-4">
+            <label class="block text-gray-700 font-bold mb-2">Category</label>
+            <select name="category" class="border rounded px-2 py-1">
+                <option value="">All Categories</option>
+                <option value="Action">Action</option>
+                <option value="Drama">Drama</option>
+                <option value="Comedy">Comedy</option>
+                <option value="Adventure">Adventure</option>
+                <option value="Sci-Fi">Sci-Fi</option>
+                <option value="Fantasy">Fantasy</option>
+                <option value="Horror">Horror</option>
+                <option value="Romance">Romance</option>
+                <option value="Thriller">Thriller</option>
+                <option value="Animation">Animation</option>
+            </select>
+        </div>
+
+        <div class="mb-4">
+            <label class="block text-gray-700 font-bold mb-2">Release Date</label>
+            <input type="date" name="releaseDate" class="px-4 py-2 w-full border rounded">
+        </div>
+
+        <div class="mb-4">
+            <label class="block text-gray-700 font-bold mb-2">Director</label>
+            <input type="text" name="director" class="px-4 py-2 w-full border rounded">
+        </div>
+
+        <div class="mb-4">
+            <label class="block text-gray-700 font-bold mb-2">Actors (comma-separated)</label>
+            <input type="text" name="actors" class="px-4 py-2 w-full border rounded">
+        </div>
+
+        <div class="mb-4">
+            <label class="block text-gray-700 font-bold mb-2">Rating</label>
+            <input type="number" name="rating" step="0.1" class="px-4 py-2 w-full border rounded">
+        </div>
+
+        <div class="mb-4">
+            <label class="block text-gray-700 font-bold mb-2">Poster url</label>
+            <input type="text" name="poster" step="0.1" class="px-4 py-2 w-full border rounded">
+        </div>
+
+        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Add Movie</button>
+    </form>
+    <br/>
+    <a th:href="@{/}">Back to Movies List</a>
+</div>
+</body>
+</html>
